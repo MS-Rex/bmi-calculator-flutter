@@ -13,7 +13,7 @@ const defaultText = TextStyle(
 TextStyle sliderText(
     {double fsize = 20,
     //Widget fweight=FontWeight.normal
-    var fonss = FontWeight.w200}) {
+    FontWeight fonss = FontWeight.w200}) {
   return TextStyle(
       color: Colors.white,
       fontSize: fsize,

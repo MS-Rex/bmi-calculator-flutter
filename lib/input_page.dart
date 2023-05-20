@@ -17,6 +17,8 @@ enum Gender { male, female }
 Gender? genderSelected;
 var colorSelect = KinactiveColor;
 int currentValue = 150;
+int currentWeight = 50;
+int currentAge = 20;
 
 class MainText extends StatelessWidget {
   final String mainText;
@@ -157,10 +159,84 @@ class _InputPageState extends State<InputPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: ReusableContainer(Color(kContainerColor)),
+                    child: ReusableContainer(
+                        Color(kContainerColor),
+                        Column(
+                          //crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'WEIGHT',
+                              style: sliderText(),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              currentWeight.toString(),
+                              style:
+                                  sliderText(fsize: 60, fonss: FontWeight.w900),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                RoundIcon(FontAwesomeIcons.minus, () {
+                                  setState(() {
+                                    currentWeight = currentWeight - 1;
+                                  });
+                                }),
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                RoundIcon(FontAwesomeIcons.plus, () {
+                                  setState(() {
+                                    currentWeight = currentWeight + 1;
+                                  });
+                                })
+                              ],
+                            )
+                          ],
+                        )),
                   ),
                   Expanded(
-                    child: ReusableContainer(Color(kContainerColor)),
+                    child: ReusableContainer(
+                        Color(kContainerColor),
+                        Column(
+                          //crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'AGE',
+                              style: sliderText(),
+                            ),
+                            SizedBox(
+                              height: 20,
+                            ),
+                            Text(
+                              currentAge.toString(),
+                              style:
+                                  sliderText(fsize: 60, fonss: FontWeight.w900),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                RoundIcon(FontAwesomeIcons.minus, () {
+                                  setState(() {
+                                    currentAge = currentAge - 1;
+                                  });
+                                }),
+                                SizedBox(
+                                  width: 40,
+                                ),
+                                RoundIcon(FontAwesomeIcons.plus, () {
+                                  setState(() {
+                                    currentAge = currentAge + 1;
+                                  });
+                                })
+                              ],
+                            )
+                          ],
+                        )),
                   ),
                 ],
               ),
@@ -189,7 +265,63 @@ class _InputPageState extends State<InputPage> {
   }
 }
 
+class RoundIcon extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback onPresss;
 
+  //int currentWeightt;
+  RoundIcon(this.icon, this.onPresss);
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child: Icon(
+        icon,
+        color: Colors.white,
+        size: 30,
+      ),
+      onPressed: onPresss,
+      elevation: 6.0,
+      constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF4C4F5E),
+    );
+  }
+}
 
+// class RoundIcon extends StatefulWidget {
+//   IconData icon1;
+//   //int currentWeightt;
+//   RoundIcon(
+//     this.icon1,
+//   );
+
+//   @override
+//   State<RoundIcon> createState() => _RoundIconState();
+// }
+
+// class _RoundIconState extends State<RoundIcon> {
+//   RoundIcon rmb = RoundIcon(FontAwesomeIcons.plus);
+//   @override
+//   Widget build(BuildContext context) {
+//     return RawMaterialButton(
+//       child: Icon(
+//         rmb.icon1,
+//         color: Colors.white,
+//         size: 30,
+//       ),
+//       onPressed: () {
+//         setState(() {
+//           currentWeight = currentWeight + 10;
+//         });
+
+//         print("pressedd");
+//       },
+//       elevation: 6.0,
+//       constraints: BoxConstraints.tightFor(width: 56.0, height: 56.0),
+//       shape: CircleBorder(),
+//       fillColor: Color(0xFF4C4F5E),
+//     );
+//   }
+// }
 
 //0xFF1d1E33
