@@ -1,4 +1,6 @@
+import 'package:bmi_calculator/calculate_page.dart';
 import 'package:bmi_calculator/main.dart';
+import 'bmi_calculate.dart';
 
 import 'icon_content.dart';
 //import 'package:bmi_calculator/main.dart';
@@ -241,20 +243,33 @@ class _InputPageState extends State<InputPage> {
                 ],
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: kBottomcontainerHeight,
-              margin: EdgeInsets.all(10.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.blue,
-              ),
-              child: Center(
-                child: FaIcon(
-                  FontAwesomeIcons.mars,
-                  color: Colors.black,
-                  size: 24.0,
-                  semanticLabel: 'Text to announce in accessibility modes',
+            GestureDetector(
+              onTap: () {
+                CalculateBMI2 calbmi =
+                    CalculateBMI2(currentValue, currentWeight);
+                print(calbmi.calBMI());
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Calculate(calbmi.calBMI(),
+                          calbmi.getresult(), calbmi.getInterpretation())),
+                );
+              },
+              child: Container(
+                width: double.infinity,
+                height: kBottomcontainerHeight,
+                margin: EdgeInsets.all(10.0),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.blue,
+                ),
+                child: Center(
+                  child: FaIcon(
+                    FontAwesomeIcons.clipboardCheck,
+                    color: Colors.black,
+                    size: 24.0,
+                    semanticLabel: 'Text to announce in accessibility modes',
+                  ),
                 ),
               ),
             )

@@ -10,13 +10,16 @@ const defaultText = TextStyle(
   fontFamily: 'JosefinSans',
 );
 
-TextStyle sliderText(
-    {double fsize = 20,
-    //Widget fweight=FontWeight.normal
-    FontWeight fonss = FontWeight.w200}) {
+TextStyle sliderText({
+  double fsize = 20,
+  //Widget fweight=FontWeight.normal
+  FontWeight fonss = FontWeight.w200,
+  Color fcolor = Colors.white,
+}) {
   return TextStyle(
-      color: Colors.white,
-      fontSize: fsize,
-      fontFamily: 'JosefinSans',
-      fontWeight: fonss);
+    color: fcolor,
+    fontSize: fsize,
+    fontFamily: 'JosefinSans',
+    fontWeight: fonss,
+  );
 }
